@@ -1,15 +1,12 @@
 package hexlet.code;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-
-import java.io.File;
-import java.util.HashMap;
 import java.util.Map;
+import static hexlet.code.GetData.getData;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference.")
@@ -30,17 +27,12 @@ public class App implements Runnable {
             Map<String, Object> data1 = getData(filepath1);
             Map<String, Object> data2 = getData(filepath2);
 
-            System.out.println(data1);
-            System.out.println(data2);
+           System.out.println(Differ.generate(data1, data2));
         } catch (Exception e) {
             System.err.println("Error reading or parsing files: " + e.getMessage());
         }
     }
 
-    public static Map<String, Object> getData(String filepath) throws Exception {
-        ObjectMapper result = new ObjectMapper();
-        return result.readValue(new File(filepath), new TypeReference<Map<String, Object>>() {});
-    }
     public static void main(String[] args) throws Exception {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
