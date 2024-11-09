@@ -1,10 +1,12 @@
 package hexlet.code;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-import static hexlet.code.GetData.getData;
 
 public class Differ {
     public static String generate(Map<String, Object> data1, Map<String, Object> data2) throws Exception {
@@ -14,18 +16,18 @@ public class Differ {
 
         for (var key : keys) {
             if (data1.containsKey(key) && data2.containsKey(key) && data1.get(key).equals(data2.get(key))) {
-                result.append("  ").append(key).append(": ").append(data1.get(key)).append("\n");
+                result.append("    ").append(key).append(": ").append(data1.get(key)).append("\n");
             } else if (data1.containsKey(key) && !data2.containsKey(key)) {
-                result.append("  ").append("- ").append(key).append(": ").append(data1.get(key)).append("\n");;
-            } else if (data1.containsKey(key) && data2.containsKey(key) && !data1.get(key).equals(data2.get(key))){
-                result.append("  ").append("- ").append(key).append(": ").append(data1.get(key)).append("\n");;
-                result.append("  ").append("+ ").append(key).append(": ").append(data2.get(key)).append("\n");;
+                result.append("  ").append("- ").append(key).append(": ").append(data1.get(key)).append("\n");
+            } else if (data1.containsKey(key) && data2.containsKey(key) && !data1.get(key).equals(data2.get(key))) {
+                result.append("  ").append("- ").append(key).append(": ").append(data1.get(key)).append("\n");
+                result.append("  ").append("+ ").append(key).append(": ").append(data2.get(key)).append("\n");
             } else {
-                result.append("  ").append("+ ").append(key).append(": ").append(data2.get(key)).append("\n");;
+                result.append("  ").append("+ ").append(key).append(": ").append(data2.get(key)).append("\n");
             }
         }
 
-        result.append(" }");
+        result.append("}");
         String finallyResult = result.toString();
         return finallyResult;
 
