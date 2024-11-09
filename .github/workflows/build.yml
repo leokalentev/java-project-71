@@ -10,5 +10,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Make gradlew executable
+        run: chmod +x ./app/gradlew
+
       - name: Build with Gradle
         run: ./app/gradlew build

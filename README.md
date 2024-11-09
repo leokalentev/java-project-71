@@ -2,6 +2,10 @@
 
 [![Actions Status](https://github.com/leokalentev/java-project-71/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/leokalentev/java-project-71/actions)
 
+### Build:
+
+[![build project](https://github.com/leokalentev/java-project-71/actions/workflows/build.yml/badge.svg)](https://github.com/leokalentev/java-project-71/actions/workflows/build.yml)
+
 # Пример сравнения двух файлов
 
 Вы можете увидеть [здесь](https://asciinema.org/a/m4jqB9U1GWpKFc03ODL5I5adJ).
