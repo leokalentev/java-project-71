@@ -14,5 +14,5 @@ jobs:
         run: chmod +x ./app/gradlew
 
       - name: Build with Gradle
+        working-directory: app
         run: ./app/gradlew build
-        working-directory: ./app

@@ -6,6 +6,10 @@
 
 [![build project](https://github.com/leokalentev/java-project-71/actions/workflows/build.yml/badge.svg)](https://github.com/leokalentev/java-project-71/actions/workflows/build.yml)
 
+### CodeClimate:
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/5e1100945e8885679360/maintainability)](https://codeclimate.com/github/leokalentev/java-project-71/maintainability)
+
 # Пример сравнения двух файлов
 
 Вы можете увидеть [здесь](https://asciinema.org/a/m4jqB9U1GWpKFc03ODL5I5adJ).
