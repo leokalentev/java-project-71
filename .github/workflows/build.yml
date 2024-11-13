@@ -26,7 +26,6 @@ jobs:
 
       - name: Generate Jacoco test report
         run: ./app/gradlew jacocoTestReport
-        working-directory: app
 
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
