@@ -22,15 +22,14 @@ jobs:
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
-          arguments: jacocoTestReport
+          arguments: build
           build-root-directory: app
 
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          JACOCO_SOURCE_PATH: ${{github.workspace}}/app/src/main/java
         with:
-          coverageCommand: ./gradlew jacocoTestReport
-          coverageLocations: app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
-          workingDirectory: app
-          prefix: app/src/main/java
+          coverageCommand: make report
+          coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
