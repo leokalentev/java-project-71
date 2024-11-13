@@ -8,22 +8,28 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
           java-version: "17"
           distribution: "temurin"
+
       - name: Grant execute permission for gradlew
-        run: chmod +x app/gradlew
+        run: chmod +x gradlew
+        working-directory: app
+
       - name: Build with Gradle
         uses: gradle/gradle-build-action@v2
         with:
           arguments: jacocoTestReport
           build-root-directory: app
+
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:
-          coverageCommand: ./app/gradlew jacocoTestReport
+          coverageCommand: ./gradlew jacocoTestReport
           coverageLocations: ${{ github.workspace }}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+          working-directory: app
