@@ -2,6 +2,7 @@ plugins {
     id("java")
     application
     checkstyle
+    id("jacoco")
 }
 
 application {
@@ -24,9 +25,20 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
 }
 
-tasks.test {
-    useJUnitPlatform()
+jacoco {
+    toolVersion = "0.8.7"  // Укажите необходимую версию Jacoco
 }
 
+tasks.test {
+    useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport) // Генерация отчета после тестов
+}
 
-
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+    reports {
+        xml.required.set(true)   // Отчет в формате XML
+        csv.required.set(false)  // Отключение отчета в формате CSV
+        html.required.set(true)  // Отчет в формате HTML
+    }
+}
