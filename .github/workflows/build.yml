@@ -16,7 +16,7 @@ jobs:
           distribution: "temurin"
 
       - name: Grant execute permission for gradlew
-        run: chmod +x app/gradlew
+        run: chmod +x ${{ github.workspace }}/app/gradlew
 
       - name: Build with Gradle
         run: ./gradlew build
@@ -29,8 +29,8 @@ jobs:
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
         env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-          JACOCO_SOURCE_PATH: ${{github.workspace}}/app/src/main/java
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+          JACOCO_SOURCE_PATH: ${{ github.workspace }}/app/src/main/java
         with:
-          coverageCommand: ../app/gradlew jacocoTestReport
-          coverageLocations: ../app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+          coverageCommand: ${{ github.workspace }}/app/gradlew jacocoTestReport
+          coverageLocations: ${{ github.workspace }}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
