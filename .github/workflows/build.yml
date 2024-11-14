@@ -18,6 +18,9 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x app/gradlew
 
+      - name: Create symlink for gradlew in root directory
+        run: ln -s $PWD/app/gradlew $PWD/gradlew
+
       - name: Build with Gradle
         run: ./gradlew build
         working-directory: app
