@@ -7,24 +7,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
       - name: Set up JDK 17
-        uses: actions/setup-java@v3
+        uses: actions/setup-java@v2
         with:
           java-version: "17"
           distribution: "temurin"
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x ${{ github.workspace }}/app/gradlew
-
       - name: Build with Gradle
-        run: ./gradlew build
-        working-directory: app
-
-      - name: Generate Jacoco test report
-        run: ./gradlew jacocoTestReport
-        working-directory: app
+        uses: gradle/gradle-build-action@v2
+        with:
+          arguments: build
+          build-root-directory: app
 
       - name: Test & publish code coverage
         uses: paambaati/codeclimate-action@v5.0.0
@@ -32,5 +27,5 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
           JACOCO_SOURCE_PATH: ${{ github.workspace }}/app/src/main/java
         with:
-          coverageCommand: ${{ github.workspace }}/app/gradlew jacocoTestReport
+          coverageCommand: make report
           coverageLocations: ${{ github.workspace }}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
