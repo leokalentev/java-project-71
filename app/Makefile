@@ -1,4 +1,4 @@
-.PHONY: build run-dist
+.PHONY: build run-dist report
 
 build:
 	./gradlew build
@@ -8,5 +8,3 @@ run-dist: build
 	
 report:
 	./gradlew jacocoTestReport
-
-
