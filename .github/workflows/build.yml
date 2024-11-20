@@ -22,9 +22,11 @@ jobs:
         run: ./app/gradlew build -project-dir app
 
       - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v5.0.0
-        env:
-          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        with:
-          coverageCommand: ./app/gradlew jacocoTestReport -project-dir app
-          coverageLocations: ${{github.workspace}}/app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+  uses: paambaati/codeclimate-action@v5.0.0
+  env:
+    CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+  with:
+    coverageCommand: ./app/gradlew jacocoTestReport -p app
+    coverageLocations: ./app/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
+    debug: true
+    prefix: ./app/src/main/java
