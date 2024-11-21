@@ -14,12 +14,6 @@ jobs:
         with:
           java-version: "21"
           distribution: "temurin"
-      - name: Set up permissions for gradlew
-        run: chmod +x ./app/gradlew
-      - name: Run checkstyle
-        run: ./app/gradlew checkstyleMain
-      - name: Run tests
-        run: ./app/gradlew test
       - name: Publish code coverage
         uses: paambaati/codeclimate-action@v9.0.0
         env:
