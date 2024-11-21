@@ -1,10 +1,10 @@
+.PHONY: build run-dist report
+
+build:
+	../gradlew build
+
 run-dist: build
 	./build/install/app/bin/app
-	
-build:
-    make -C app build
 
 report:
-    make -C app report
-
-.PHONY: build
+	../gradlew jacocoTestReport
