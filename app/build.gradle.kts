@@ -23,7 +23,9 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.3")
     implementation("info.picocli:picocli:4.7.6")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.15.2")
 }
+
 
 jacoco {
     toolVersion = "0.8.7"  // Укажите необходимую версию Jacoco

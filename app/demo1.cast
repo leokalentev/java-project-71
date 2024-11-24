@@ -1,0 +1,9 @@
+{"version": 2, "width": 120, "height": 30, "timestamp": 1732452082, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}}
+[0.016515, "o", "\u001b[?2004h\u001b]0;leonigleo13@LAPTOP-UDBCL88U: /mnt/d/java-project-71/app\u0007\u001b[01;32mleonigleo13@LAPTOP-UDBCL88U\u001b[00m:\u001b[01;34m/mnt/d/java-project-71/app\u001b[00m$ "]
+[14.095189, "o", "\u001b[7m./build/install/app/bin/app src/main/resources/file3.yml src/mai\u001b[27m\u001b[7mn\u001b[27m\u001b[7m/resources/file4.yml\u001b[27m"]
+[14.640573, "o", "\u001b[A\r\u001b]0;leonigleo13@LAPTOP-UDBCL88U: /mnt/d/java-project-71/app\u0007\u001b[01;32mleonigleo13@LAPTOP-UDBCL88U\u001b[00m:\u001b[01;34m/mnt/d/java-project-71/app\u001b[00m$ ./build/install/app/bin/app src/main/resources/file3.yml src/main/resources/file4.yml\r\n\u001b[?2004l\r"]
+[15.918375, "o", "{ \r\n  - follow: false\r\n    host: hexlet.io\r\n  - proxy: 123.234.53.22\r\n  - timeout: 50\r\n  + timeout: 20\r\n  + verbose: true\r\n}\r\n"]
+[15.929124, "o", "\u001b[?2004h\u001b]0;leonigleo13@LAPTOP-UDBCL88U: /mnt/d/java-project-71/app\u0007\u001b[01;32mleonigleo13@LAPTOP-UDBCL88U\u001b[00m:\u001b[01;34m/mnt/d/java-project-71/app\u001b[00m$ "]
+[22.940323, "o", "\u0007"]
+[23.461916, "o", "ф"]
+[24.54124, "o", "\b\u001b[K"]

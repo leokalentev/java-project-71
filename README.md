@@ -14,6 +14,10 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5e1100945e8885679360/test_coverage)](https://codeclimate.com/github/leokalentev/java-project-71/test_coverage)
 
-# Пример сравнения
+# Пример сравнения с json файлами
 
-Вы можете увидеть [здесь](https://asciinema.org/a/m4jqB9U1GWpKFc03ODL5I5adJ).
+Вы можете увидеть [здесь](https://asciinema.org/a/MJ3meqXXCnuwJf31ThzlvRI52).
+
+# Пример сравнения с yml файлами
+
+Вы можете увидеть [здесь](https://asciinema.org/a/f63DvHEZPBhCOtsM9JWeXq8i8).
