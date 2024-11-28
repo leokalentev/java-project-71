@@ -15,7 +15,7 @@ public class GetData {
         } else {
             objectMapper = new ObjectMapper();
         }
-
-        return objectMapper.readValue(new File(filepath), new TypeReference<Map<String, Object>>() { });
+        return objectMapper.readValue(new File(filepath), new TypeReference<>() {
+        });
     }
 }
