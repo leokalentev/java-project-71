@@ -21,3 +21,7 @@
 # Пример сравнения с yml файлами
 
 Вы можете увидеть [здесь](https://asciinema.org/a/f63DvHEZPBhCOtsM9JWeXq8i8).
+
+# Пример сравнения для вложенных структур
+
+Вы можеье увидеть [здесь](https://asciinema.org/a/iByQ6XVWlxyU8R9xBAHXRQB3t).
