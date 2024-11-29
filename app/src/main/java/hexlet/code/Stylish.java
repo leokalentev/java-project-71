@@ -13,12 +13,12 @@ public class Stylish {
 
             switch (type) {
                 case "ADDED" -> {
-                    Object value = entry.get("newValue");
-                    result.append("  + ").append(key).append(": ").append(formatValue(value)).append("\n");
+                    Object newValue = entry.get("newValue");
+                    result.append("  + ").append(key).append(": ").append(formatValue(newValue)).append("\n");
                 }
                 case "REMOVED" -> {
-                    Object value = entry.get("oldValue");
-                    result.append("  - ").append(key).append(": ").append(formatValue(value)).append("\n");
+                    Object oldValue = entry.get("oldValue");
+                    result.append("  - ").append(key).append(": ").append(formatValue(oldValue)).append("\n");
                 }
                 case "UNCHANGED" -> {
                     Object value = entry.get("value");
@@ -30,9 +30,7 @@ public class Stylish {
                     result.append("  - ").append(key).append(": ").append(formatValue(oldValue)).append("\n");
                     result.append("  + ").append(key).append(": ").append(formatValue(newValue)).append("\n");
                 }
-                default -> {
-                    result.append("  ? ").append(key).append(": unknown type\n");
-                }
+                default -> throw new IllegalArgumentException("Unknown diff type: " + type);
             }
         }
 
@@ -47,8 +45,10 @@ public class Stylish {
             return formatMap((Map<?, ?>) value);
         } else if (value == null) {
             return "null";
+        } else if (value instanceof Boolean || value instanceof Number || value instanceof String) {
+            return value.toString();
         }
-        return value.toString();
+        throw new IllegalArgumentException("Unsupported value type: " + value.getClass().getName());
     }
 
     private static String formatList(List<?> list) {
@@ -57,9 +57,9 @@ public class Stylish {
 
     private static String formatMap(Map<?, ?> map) {
         StringBuilder mapStr = new StringBuilder("{");
-        map.forEach((k, v) -> mapStr.append(k).append(": ").append(formatValue(v)).append(", "));
+        map.forEach((k, v) -> mapStr.append(k).append("=").append(formatValue(v)).append(", "));
         if (mapStr.length() > 1) {
-            mapStr.setLength(mapStr.length() - 2);
+            mapStr.setLength(mapStr.length() - 2); // Удалить лишнюю запятую и пробел
         }
         mapStr.append("}");
         return mapStr.toString();

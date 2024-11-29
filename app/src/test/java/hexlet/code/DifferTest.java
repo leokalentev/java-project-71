@@ -11,7 +11,7 @@ public class DifferTest {
 
         String afterFunc = Differ.generate(filepath1, filepath2, "stylish");
         String result = "{\n"
-                + "  chars1: [a, b, c]\n"
+                + "    chars1: [a, b, c]\n"
                 + "  - chars2: [d, e, f]\n"
                 + "  + chars2: false\n"
                 + "  - checked: false\n"
@@ -46,7 +46,7 @@ public class DifferTest {
 
         String afterFunc = Differ.generate(filepath1, filepath2, "stylish");
         String result = "{\n"
-                + "  chars1: [a, b, c]\n"
+                + "    chars1: [a, b, c]\n"
                 + "  - chars2: [d, e, f]\n"
                 + "  + chars2: false\n"
                 + "  - checked: false\n"
