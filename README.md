@@ -24,4 +24,8 @@
 
 # Пример сравнения для вложенных структур
 
-Вы можеье увидеть [здесь](https://asciinema.org/a/iByQ6XVWlxyU8R9xBAHXRQB3t).
+Вы можете увидеть [здесь](https://asciinema.org/a/iByQ6XVWlxyU8R9xBAHXRQB3t).
+
+# Пример сравнения с форматом Plain
+
+Вы можете увидеть [здесь](https://asciinema.org/a/f1m1IUk79IiqjeqB3zZQWX55W).

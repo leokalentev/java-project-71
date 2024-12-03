@@ -16,7 +16,8 @@ public class App implements Runnable {
     @Parameters(index = "1", paramLabel = "filepath2", description = "path to second file")
     private String filepath2;
 
-    @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]",
+    @Option(names = {"-f", "--format"}, paramLabel = "format",
+            description = "output format: stylish, plain [default: stylish]",
             defaultValue = "stylish")
     private String format;
 

@@ -1,5 +1,8 @@
 package hexlet.code;
 
+import hexlet.code.formatters.Plain;
+import hexlet.code.formatters.Stylish;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -7,18 +10,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static hexlet.code.GetData.getData;
-
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
-        Map<String, Object> data1 = getData(filePath1);
-        Map<String, Object> data2 = getData(filePath2);
+        Map<String, Object> data1 = GetData.getData(filePath1);
+        Map<String, Object> data2 = GetData.getData(filePath2);
+        List<Map<String, Object>> diff = generateDiff(data1, data2);
 
-        if ("stylish".equals(format) || format == null) {
-            return Stylish.format(generateDiff(data1, data2));
+        if ("plain".equals(format)) {
+            return Plain.format(diff);
+        } else if ("stylish".equals(format) || format == null) {
+            return Stylish.format(diff);
+        } else {
+            throw new IllegalArgumentException("Unsupported format: " + format);
         }
-
-        throw new IllegalArgumentException("Unsupported format: " + format);
     }
 
     private static List<Map<String, Object>> generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
