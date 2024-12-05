@@ -29,3 +29,7 @@
 # Пример сравнения с форматом Plain
 
 Вы можете увидеть [здесь](https://asciinema.org/a/f1m1IUk79IiqjeqB3zZQWX55W).
+
+# Пример сравнения с форматом Json
+
+Вы можете увидеть [здесь](https://asciinema.org/a/Dkk26WhXhi2m9pIiN5cV6r57f).

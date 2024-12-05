@@ -79,7 +79,7 @@ public class DifferTest {
         String filepath1 = "src/main/resources/file1.json";
         String filepath2 = "src/main/resources/file2.json";
 
-        String expected = """
+        String result = """
                 Property 'chars2' was updated. From [complex value] to false
                 Property 'checked' was updated. From false to true
                 Property 'default' was updated. From null to [complex value]
@@ -96,7 +96,93 @@ public class DifferTest {
                 """;
 
         String actual = Differ.generate(filepath1, filepath2, "plain");
-        assertEquals(expected.trim(), actual.trim());
+        assertEquals(result.trim(), actual.trim());
     }
 
+    @Test
+    void testJsonFormatter() throws Exception {
+        String filepath1 = "src/main/resources/file1.json";
+        String filepath2 = "src/main/resources/file2.json";
+
+        String result = """
+                [ {
+                  "type" : "UNCHANGED",
+                  "value" : [ "a", "b", "c" ],
+                  "key" : "chars1"
+                }, {
+                  "newValue" : false,
+                  "oldValue" : [ "d", "e", "f" ],
+                  "type" : "UPDATED",
+                  "key" : "chars2"
+                }, {
+                  "newValue" : true,
+                  "oldValue" : false,
+                  "type" : "UPDATED",
+                  "key" : "checked"
+                }, {
+                  "newValue" : [ "value1", "value2" ],
+                  "oldValue" : null,
+                  "type" : "UPDATED",
+                  "key" : "default"
+                }, {
+                  "newValue" : null,
+                  "oldValue" : 45,
+                  "type" : "UPDATED",
+                  "key" : "id"
+                }, {
+                  "oldValue" : "value1",
+                  "type" : "REMOVED",
+                  "key" : "key1"
+                }, {
+                  "newValue" : "value2",
+                  "type" : "ADDED",
+                  "key" : "key2"
+                }, {
+                  "type" : "UNCHANGED",
+                  "value" : [ 1, 2, 3, 4 ],
+                  "key" : "numbers1"
+                }, {
+                  "newValue" : [ 22, 33, 44, 55 ],
+                  "oldValue" : [ 2, 3, 4, 5 ],
+                  "type" : "UPDATED",
+                  "key" : "numbers2"
+                }, {
+                  "oldValue" : [ 3, 4, 5 ],
+                  "type" : "REMOVED",
+                  "key" : "numbers3"
+                }, {
+                  "newValue" : [ 4, 5, 6 ],
+                  "type" : "ADDED",
+                  "key" : "numbers4"
+                }, {
+                  "newValue" : {
+                    "nestedKey" : "value",
+                    "isNested" : true
+                  },
+                  "type" : "ADDED",
+                  "key" : "obj1"
+                }, {
+                  "newValue" : "Another value",
+                  "oldValue" : "Some value",
+                  "type" : "UPDATED",
+                  "key" : "setting1"
+                }, {
+                  "newValue" : 300,
+                  "oldValue" : 200,
+                  "type" : "UPDATED",
+                  "key" : "setting2"
+                }, {
+                  "newValue" : "none",
+                  "oldValue" : true,
+                  "type" : "UPDATED",
+                  "key" : "setting3"
+                } ]
+                """;
+
+        String actual = Differ.generate(filepath1, filepath2, "json");
+        String normalizedExpected = result.replace("\r\n", "\n").trim();
+        String normalizedActual = actual.replace("\r\n", "\n").trim();
+
+        assertEquals(normalizedExpected, normalizedActual);
+    }
 }

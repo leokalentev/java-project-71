@@ -33,7 +33,6 @@ public class Plain {
         return result.toString().replace("\r\n", "\n").trim();
     }
 
-
     private static String formatValue(Object value) {
         if (value instanceof Map || value instanceof List) {
             return "[complex value]";
@@ -43,5 +42,4 @@ public class Plain {
         }
         return String.valueOf(value);
     }
-
 }
