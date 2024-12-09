@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import static hexlet.code.DiffGenerator.generateDiff;
 
 public class Differ {
+    private static final String DEFAULT_FORMAT = "stylish";
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
         if (format == null || format.isEmpty()) {
-            format = "stylish";
+            format = DEFAULT_FORMAT;
         }
         Map<String, Object> data1 = GetData.getData(filePath1);
         Map<String, Object> data2 = GetData.getData(filePath2);
@@ -22,21 +24,19 @@ public class Differ {
     }
 
     public static String generate(String filePath1, String filePath2) throws Exception {
-        String defaultFormat = "stylish";
+        String defaultFormat = DEFAULT_FORMAT;
         return generate(filePath1, filePath2, defaultFormat);
     }
 
-
-
     public static List<String> allKeys(Map<String, Object> data1, Map<String, Object> data2) {
         List<String> result = new ArrayList<>();
-        var keys1 = data1.keySet();
-        for (var key : keys1) {
+        Set<String> keys1 = data1.keySet();
+        for (String key : keys1) {
             result.add(key);
         }
 
-        var keys2 = data2.keySet();
-        for (var key : keys2) {
+        Set<String> keys2 = data2.keySet();
+        for (String key : keys2) {
             result.add(key);
         }
 
