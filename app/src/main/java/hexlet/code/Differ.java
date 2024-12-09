@@ -21,6 +21,12 @@ public class Differ {
         return Formatter.format(diff, format);
     }
 
+    public static String generate(String filePath1, String filePath2) throws Exception {
+        String defaultFormat = "stylish";
+        return generate(filePath1, filePath2, defaultFormat);
+    }
+
+
 
     public static List<String> allKeys(Map<String, Object> data1, Map<String, Object> data2) {
         List<String> result = new ArrayList<>();
