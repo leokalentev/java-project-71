@@ -11,12 +11,16 @@ import static hexlet.code.DiffGenerator.generateDiff;
 
 public class Differ {
     public static String generate(String filePath1, String filePath2, String format) throws Exception {
+        if (format == null || format.isEmpty()) {
+            format = "stylish";
+        }
         Map<String, Object> data1 = GetData.getData(filePath1);
         Map<String, Object> data2 = GetData.getData(filePath2);
         List<Map<String, Object>> diff = generateDiff(data1, data2);
 
         return Formatter.format(diff, format);
     }
+
 
     public static List<String> allKeys(Map<String, Object> data1, Map<String, Object> data2) {
         List<String> result = new ArrayList<>();

@@ -9,7 +9,7 @@ public class DifferTest {
         String filepath1 = "src/main/resources/file1.json";
         String filepath2 = "src/main/resources/file2.json";
 
-        String afterFunc = Differ.generate(filepath1, filepath2, "stylish");
+        String afterFunc = Differ.generate(filepath1, filepath2,"stylish");
         String result = "{\n"
                 + "    chars1: [a, b, c]\n"
                 + "  - chars2: [d, e, f]\n"
