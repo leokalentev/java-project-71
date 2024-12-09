@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class DifferTest {
+public final class DifferTest {
 
     private static final String RESOURCES_DIR = "src/main/resources/";
     private String expectedStylish;
@@ -19,7 +19,7 @@ public class DifferTest {
     private String expectedJson;
 
     @BeforeEach
-    void setUp() throws Exception {
+    final void setUp() throws Exception {
         expectedStylish = Files.readString(Path.of(RESOURCES_DIR + "expectedStylish.txt"));
         expectedPlain = Files.readString(Path.of(RESOURCES_DIR + "expectedPlain.txt"));
         expectedJson = Files.readString(Path.of(RESOURCES_DIR + "expectedJson.txt"));
@@ -27,7 +27,7 @@ public class DifferTest {
 
     @ParameterizedTest
     @MethodSource("provideFilePairsForStylish")
-    void testDifferStylish(String filepath1, String filepath2) throws Exception {
+    final void testDifferStylish(String filepath1, String filepath2) throws Exception {
         String actual = Differ.generate(filepath1, filepath2);
         String normalizedExpected = expectedStylish.replace("\r\n", "\n").trim();
         String normalizedActual = actual.replace("\r\n", "\n").trim();
@@ -36,7 +36,7 @@ public class DifferTest {
 
     @ParameterizedTest
     @MethodSource("provideFilePairsForPlain")
-    void testDifferPlain(String filepath1, String filepath2) throws Exception {
+    final void testDifferPlain(String filepath1, String filepath2) throws Exception {
         String actual = Differ.generate(filepath1, filepath2, "plain");
         String normalizedExpected = expectedPlain.replace("\r\n", "\n").trim();
         String normalizedActual = actual.replace("\r\n", "\n").trim();
@@ -45,7 +45,7 @@ public class DifferTest {
 
     @ParameterizedTest
     @MethodSource("provideFilePairsForJson")
-    void testDifferJson(String filepath1, String filepath2) throws Exception {
+    final void testDifferJson(String filepath1, String filepath2) throws Exception {
         String actual = Differ.generate(filepath1, filepath2, "json");
         String normalizedExpected = expectedJson.replace("\r\n", "\n").trim();
         String normalizedActual = actual.replace("\r\n", "\n").trim();
