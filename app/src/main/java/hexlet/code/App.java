@@ -24,7 +24,7 @@ public class App implements Runnable {
     @Override
     public void run() {
         try {
-            System.out.println(Differ.generate(filepath1, filepath2));
+            System.out.println(Differ.generate(filepath1, filepath2, format));
         } catch (Exception e) {
             System.err.println("Error reading or parsing files: " + e.getMessage());
         }
