@@ -1,13 +1,10 @@
 package hexlet.code;
 
 import hexlet.code.formatters.Formatter;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
-
+import java.util.TreeSet;
 import static hexlet.code.DiffGenerator.generateDiff;
 
 public class Differ {
@@ -28,23 +25,11 @@ public class Differ {
         return generate(filePath1, filePath2, defaultFormat);
     }
 
-    public static List<String> allKeys(Map<String, Object> data1, Map<String, Object> data2) {
-        List<String> result = new ArrayList<>();
-        Set<String> keys1 = data1.keySet();
-        for (String key : keys1) {
-            result.add(key);
-        }
-
-        Set<String> keys2 = data2.keySet();
-        for (String key : keys2) {
-            result.add(key);
-        }
-
-        Collections.sort(result);
-        List<String> uniqueResult = result.stream()
-                .distinct()
-                .collect(Collectors.toList());
-        return uniqueResult;
+    public static Set<String> allKeys(Map<String, Object> data1, Map<String, Object> data2) {
+        Set<String> uniqueKeys = new TreeSet<>();
+        uniqueKeys.addAll(data1.keySet());
+        uniqueKeys.addAll(data2.keySet());
+        return uniqueKeys;
     }
 
     protected static boolean isNested(Object value) {

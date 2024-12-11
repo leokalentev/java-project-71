@@ -1,4 +1,6 @@
 package hexlet.code.formatters;
+
+import hexlet.code.DiffConstants;
 import java.util.List;
 import java.util.Map;
 
@@ -7,24 +9,26 @@ public class Plain {
         StringBuilder result = new StringBuilder();
 
         for (Map<String, Object> entry : diff) {
-            String key = (String) entry.get("key");
-            String type = (String) entry.get("type");
+            String key = (String) entry.get(DiffConstants.KEY);
+            String type = (String) entry.get(DiffConstants.TYPE);
 
             switch (type) {
-                case "ADDED" -> {
-                    Object newValue = entry.get("newValue");
+                case DiffConstants.ADDED -> {
+                    Object newValue = entry.get(DiffConstants.NEW_VALUE);
                     result.append(String.format("Property '%s' was added with value: %s%n", key,
                             formatValue(newValue)));
                 }
-                case "REMOVED" -> result.append(String.format("Property '%s' was removed%n", key));
-                case "UPDATED" -> {
-                    Object oldValue = entry.get("oldValue");
-                    Object newValue = entry.get("newValue");
+                case DiffConstants.REMOVED ->
+                        result.append(String.format("Property '%s' was removed%n", key));
+                case DiffConstants.UPDATED -> {
+                    Object oldValue = entry.get(DiffConstants.OLD_VALUE);
+                    Object newValue = entry.get(DiffConstants.NEW_VALUE);
                     result.append(String.format("Property '%s' was updated. From %s to %s%n", key,
                             formatValue(oldValue),
                             formatValue(newValue)));
                 }
-                case "UNCHANGED" -> {
+                case DiffConstants.UNCHANGED -> {
+                    // Пропускаем
                 }
                 default -> throw new IllegalArgumentException("Unknown diff type: " + type);
             }

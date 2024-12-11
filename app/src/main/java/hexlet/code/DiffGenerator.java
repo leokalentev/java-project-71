@@ -1,15 +1,16 @@
 package hexlet.code;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.HashMap;
 
 public class DiffGenerator {
 
     public static List<Map<String, Object>> generateDiff(Map<String, Object> data1, Map<String, Object> data2) {
         List<Map<String, Object>> diff = new ArrayList<>();
-        List<String> keys = Differ.allKeys(data1, data2);
+        Set<String> keys = Differ.allKeys(data1, data2);
 
         for (String key : keys) {
             Object value1 = data1.get(key);

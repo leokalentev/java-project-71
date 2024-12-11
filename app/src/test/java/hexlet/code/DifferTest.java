@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public final class DifferTest {
 
-    private static final String RESOURCES_DIR = "src/main/resources/";
+    private static final String RESOURCES_DIR = "src/test/resources/";
     private String expectedStylish;
     private String expectedPlain;
     private String expectedJson;
@@ -29,6 +29,7 @@ public final class DifferTest {
     @MethodSource("provideFilePairsForStylish")
     void testDifferStylish(String filepath1, String filepath2) throws Exception {
         String actual = Differ.generate(filepath1, filepath2);
+
         String normalizedExpected = expectedStylish.replace("\r\n", "\n").trim();
         String normalizedActual = actual.replace("\r\n", "\n").trim();
         assertEquals(normalizedExpected, normalizedActual);
@@ -38,6 +39,7 @@ public final class DifferTest {
     @MethodSource("provideFilePairsForPlain")
     void testDifferPlain(String filepath1, String filepath2) throws Exception {
         String actual = Differ.generate(filepath1, filepath2, "plain");
+
         String normalizedExpected = expectedPlain.replace("\r\n", "\n").trim();
         String normalizedActual = actual.replace("\r\n", "\n").trim();
         assertEquals(normalizedExpected, normalizedActual);
@@ -47,6 +49,7 @@ public final class DifferTest {
     @MethodSource("provideFilePairsForJson")
     void testDifferJson(String filepath1, String filepath2) throws Exception {
         String actual = Differ.generate(filepath1, filepath2, "json");
+
         String normalizedExpected = expectedJson.replace("\r\n", "\n").trim();
         String normalizedActual = actual.replace("\r\n", "\n").trim();
         assertEquals(normalizedExpected, normalizedActual);

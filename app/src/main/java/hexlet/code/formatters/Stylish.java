@@ -1,5 +1,6 @@
 package hexlet.code.formatters;
 
+import hexlet.code.DiffConstants;
 import java.util.List;
 import java.util.Map;
 
@@ -8,25 +9,25 @@ public class Stylish {
         StringBuilder result = new StringBuilder("{\n");
 
         for (Map<String, Object> entry : diff) {
-            String key = (String) entry.get("key");
-            String type = (String) entry.get("type");
+            String key = (String) entry.get(DiffConstants.KEY);
+            String type = (String) entry.get(DiffConstants.TYPE);
 
             switch (type) {
-                case "ADDED" -> {
-                    Object newValue = entry.get("newValue");
+                case DiffConstants.ADDED -> {
+                    Object newValue = entry.get(DiffConstants.NEW_VALUE);
                     result.append("  + ").append(key).append(": ").append(formatValue(newValue)).append("\n");
                 }
-                case "REMOVED" -> {
-                    Object oldValue = entry.get("oldValue");
+                case DiffConstants.REMOVED -> {
+                    Object oldValue = entry.get(DiffConstants.OLD_VALUE);
                     result.append("  - ").append(key).append(": ").append(formatValue(oldValue)).append("\n");
                 }
-                case "UNCHANGED" -> {
-                    Object value = entry.get("value");
+                case DiffConstants.UNCHANGED -> {
+                    Object value = entry.get(DiffConstants.VALUE);
                     result.append("    ").append(key).append(": ").append(formatValue(value)).append("\n");
                 }
-                case "UPDATED" -> {
-                    Object oldValue = entry.get("oldValue");
-                    Object newValue = entry.get("newValue");
+                case DiffConstants.UPDATED -> {
+                    Object oldValue = entry.get(DiffConstants.OLD_VALUE);
+                    Object newValue = entry.get(DiffConstants.NEW_VALUE);
                     result.append("  - ").append(key).append(": ").append(formatValue(oldValue)).append("\n");
                     result.append("  + ").append(key).append(": ").append(formatValue(newValue)).append("\n");
                 }
@@ -59,7 +60,7 @@ public class Stylish {
         StringBuilder mapStr = new StringBuilder("{");
         map.forEach((k, v) -> mapStr.append(k).append("=").append(formatValue(v)).append(", "));
         if (mapStr.length() > 1) {
-            mapStr.setLength(mapStr.length() - 2); // Удалить лишнюю запятую и пробел
+            mapStr.setLength(mapStr.length() - 2);
         }
         mapStr.append("}");
         return mapStr.toString();

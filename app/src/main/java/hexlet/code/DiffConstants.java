@@ -11,4 +11,7 @@ public class DiffConstants {
     public static final String UPDATED = "UPDATED";
     public static final String REMOVED = "REMOVED";
     public static final String ADDED = "ADDED";
+    public static final String FORMAT_PLAIN = "plain";
+    public static final String FORMAT_STYLISH = "stylish";
+    public static final String FORMAT_JSON = "json";
 }
